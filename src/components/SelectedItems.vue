@@ -14,6 +14,7 @@ const { selectedImages } = toRefs(props)
 <template>
   <section class="list" v-if="selectedImages.length !== 0">
     <h2>List of selected images:</h2>
+
     <TransitionGroup name="list">
       <div class="list__item" v-for="selectedImg in selectedImages" :key="selectedImg.id">
         <div class="list__item_title">
@@ -22,10 +23,12 @@ const { selectedImages } = toRefs(props)
             style="width: 50px"
             :alt="`image: ${+selectedImg.id + 1}`"
           />
+					
           <strong>Image - {{ Number(selectedImg.id) + 1 }}</strong>
         </div>
 
         <a :href="selectedImg.download_url">open in the new tab</a>
+
         <button class="list__item-delete" @click="deleteSelectedImage(selectedImg.id)">✖</button>
       </div>
     </TransitionGroup>
@@ -59,8 +62,8 @@ const { selectedImages } = toRefs(props)
     }
 
     &-delete {
-			display: flex;
-			justify-content: end;
+      display: flex;
+      justify-content: end;
       cursor: pointer;
       transition: 0.2s;
       background: none;

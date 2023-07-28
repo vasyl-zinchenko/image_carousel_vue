@@ -70,6 +70,18 @@ const toggleSelection = (id: string) => {
   }
 }
 
+function clickRight() {
+  start.value = (start.value + 1) % images.value.length
+  end.value = (end.value + 1) % images.value.length
+  direction.value = 'right'
+}
+
+function clickLeft() {
+  start.value = (start.value - 1 + images.value.length) % images.value.length
+  end.value = (end.value - 1 + images.value.length) % images.value.length
+  direction.value = 'left'
+}
+
 const updateWidth = () => {
   windowWidth.value = window.innerWidth
 }
@@ -89,18 +101,6 @@ watch(
   },
   { immediate: true }
 )
-
-function clickRight() {
-  start.value = (start.value + 1) % images.value.length
-  end.value = (end.value + 1) % images.value.length
-  direction.value = 'right'
-}
-
-function clickLeft() {
-  start.value = (start.value - 1 + images.value.length) % images.value.length
-  end.value = (end.value - 1 + images.value.length) % images.value.length
-  direction.value = 'left'
-}
 </script>
 
 <template>
@@ -124,8 +124,10 @@ function clickLeft() {
           :setIsImageLoader="setIsImageLoader"
         />
       </TransitionGroup>
+
       <section class="buttons" v-if="isImageLoaded">
         <button class="button buttons__prev" @click="clickLeft">Prev</button>
+
         <button class="button buttons__next" @click="clickRight">Next</button>
       </section>
 

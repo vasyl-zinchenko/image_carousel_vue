@@ -28,7 +28,9 @@ const isSelectedImageExist = computed(() =>
       :alt="image.author"
       @load="setIsImageLoader(true)"
     />
+
     <span class="image__id">{{ Number(image.id) + 1 }}</span>
+
     <Transition>
       <span v-if="isSelectedImageExist" class="image__checked">✓</span>
     </Transition>
