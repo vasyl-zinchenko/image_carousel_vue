@@ -23,11 +23,11 @@ const { selectedImages } = toRefs(props)
             style="width: 50px"
             :alt="`image: ${+selectedImg.id + 1}`"
           />
-					
+
           <strong>Image - {{ Number(selectedImg.id) + 1 }}</strong>
         </div>
 
-        <a :href="selectedImg.download_url">open in the new tab</a>
+        <a :href="selectedImg.download_url">open in a new tab</a>
 
         <button class="list__item-delete" @click="deleteSelectedImage(selectedImg.id)">✖</button>
       </div>
