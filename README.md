@@ -15,7 +15,7 @@
 
 Here you can:
 
-- List of images with prev and next buttons for infinite scrolling
+- List of images with "prev" and "next" buttons for infinite scrolling
 - Select images
 
 <img src="https://img001.prntscr.com/file/img001/jYI-Q_UAQ2yBTjfI5Fr_Ow.png">
