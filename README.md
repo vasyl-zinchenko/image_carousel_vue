@@ -1,46 +1,32 @@
-# slider
+<h2>Image Carousel</h2>
 
-This template should help get you started developing with Vue 3 in Vite.
+[DEMO LINK](https://ornate-custard-d7903c.netlify.app/)
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Features
 
-## Type Support for `.vue` Imports in TS
+- <img width=20 height=20 src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png">&nbsp;&nbsp;&nbsp;Vue 3, composition API
+- <img width=20 height=20 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png">&nbsp;&nbsp;&nbsp;TypeScript
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+---
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+### Data loaded from Lorem Picsum
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+Here you can:
 
-## Customize configuration
+- List of images with prev and next buttons for infinite scrolling
+- Select images
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<img src="https://img001.prntscr.com/file/img001/jYI-Q_UAQ2yBTjfI5Fr_Ow.png">
+ 
+<h3>Try it Yourself</h3>
 
-## Project Setup
+- clone the forked repo to be running
+- open the project
 
-```sh
-npm install
-```
+Then open a new terminal and enter:
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+1. image_carousel_vue
+2. npm i
+3. npm run dev
