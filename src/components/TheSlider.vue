@@ -11,28 +11,13 @@ interface Props {
 
 const props = defineProps<Props>()
 const { images, isError } = toRefs(props)
+
 const selectedImages = ref<Image[]>([])
-
 const isImageLoaded = ref<boolean>(false)
-const setIsImageLoader = (value: boolean) => {
-  isImageLoaded.value = value
-}
-
-const deleteSelectedImage = (id: string) => {
-  selectedImages.value = selectedImages.value.filter((image) => image.id !== id)
-}
-
-const toggleSelection = (id: string) => {
-  const isSelectedImageExist = selectedImages.value.some((image) => image.id === id)
-  const selectedImage = images.value.find((image) => image.id === id)
-  if (selectedImage && !isSelectedImageExist) {
-    selectedImages.value.push(selectedImage)
-  } else {
-    deleteSelectedImage(id)
-  }
-}
-
 const windowWidth = ref(window.innerWidth)
+const start = ref<number>(images.value.length - 1)
+const end = ref<number>(4)
+const direction = ref<string>('right')
 
 const containerWidth = computed(() => {
   if (windowWidth.value >= 1440) {
@@ -52,17 +37,38 @@ const countOfVisibleImages = computed(() => {
 })
 
 const imageWidth = computed(() => containerWidth.value / countOfVisibleImages.value)
-const start = ref(images.value.length - 1)
-const end = ref(4)
-const direction = ref('right')
 
-watch(
-  images,
-  () => {
-    start.value = images.value.length - 1
-  },
-  { immediate: true }
-)
+const visibleImages = computed(() => {
+  if (start.value <= end.value) {
+    return images.value.slice(start.value, end.value)
+  } else {
+    return [...images.value.slice(start.value), ...images.value.slice(0, end.value)]
+  }
+})
+
+const setIsImageLoader = (value: boolean) => {
+  isImageLoaded.value = value
+}
+
+const deleteSelectedImage = (id: string) => {
+  selectedImages.value = selectedImages.value.filter((image) => image.id !== id)
+}
+
+const toggleSelection = (id: string) => {
+  const isSelectedImageExist = selectedImages.value.some((image) => Number(image.id) === Number(id))
+  const selectedImage = images.value.find((image) => Number(image.id) === Number(id))
+
+  if (selectedImage && !isSelectedImageExist) {
+    const insertIndex = selectedImages.value.findIndex((image) => Number(image.id) > Number(id))
+    if (insertIndex === -1) {
+      selectedImages.value.push(selectedImage)
+    } else {
+      selectedImages.value.splice(insertIndex, 0, selectedImage)
+    }
+  } else {
+    deleteSelectedImage(id)
+  }
+}
 
 const updateWidth = () => {
   windowWidth.value = window.innerWidth
@@ -76,13 +82,13 @@ onUnmounted(() => {
   window.removeEventListener('resize', updateWidth)
 })
 
-const visibleImages = computed(() => {
-  if (start.value <= end.value) {
-    return images.value.slice(start.value, end.value)
-  } else {
-    return [...images.value.slice(start.value), ...images.value.slice(0, end.value)]
-  }
-})
+watch(
+  images,
+  () => {
+    start.value = images.value.length - 1
+  },
+  { immediate: true }
+)
 
 function clickRight() {
   start.value = (start.value + 1) % images.value.length

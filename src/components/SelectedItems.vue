@@ -26,7 +26,7 @@ const { selectedImages } = toRefs(props)
         </div>
 
         <a :href="selectedImg.download_url">open in the new tab</a>
-        <button class="list__item-delete" @click="deleteSelectedImage(selectedImg.id)">🗙</button>
+        <button class="list__item-delete" @click="deleteSelectedImage(selectedImg.id)">✖</button>
       </div>
     </TransitionGroup>
   </section>
