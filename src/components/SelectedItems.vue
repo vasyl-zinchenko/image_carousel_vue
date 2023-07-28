@@ -40,9 +40,9 @@ const { selectedImages } = toRefs(props)
   margin: 20px;
 
   &__item {
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: space-between;
+    grid-template-columns: 2fr 1fr 1fr;
     border: 1px solid rgba(128, 128, 128, 0.224);
     padding: 10px 5px;
     border-radius: 5px;
@@ -59,6 +59,8 @@ const { selectedImages } = toRefs(props)
     }
 
     &-delete {
+			display: flex;
+			justify-content: end;
       cursor: pointer;
       transition: 0.2s;
       background: none;
